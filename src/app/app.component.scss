@@ -1,0 +1,135 @@
+$debug: true;
+
+@if($debug){
+  *{
+    border: 2px solid green ;
+  }
+}
+
+.main-app{
+  color: var(--secondary);
+  padding : 7% 4%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  .img{
+    animation: left-animation .3s .5s forwards;
+  }
+
+  .app-heading-text{
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    .span-welcome{
+      color: red;
+    }
+
+    .main-app-welcome{
+      text-transform: uppercase;
+      font-size: 40px;
+      font-weight: bold;
+      line-height: calc(40px * 1.2);
+
+      opacity: 0;
+      animation: up-animation .3s .3s forwards;
+    }
+    .text{
+      color: red
+    }
+    .span-welcome{
+      @extend .main-app-welcome;
+      margin-bottom: 30px;
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 150px;
+        height: 4px;
+        background-color: var(--secondary) ;
+        bottom: -5px;
+        left: 0;
+      }
+    }
+    .app-component-text{
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: calc(16px * 1.4);
+      opacity: 0;
+      animation: up-animation .3s .5s forwards;
+    }
+    .btn-more{
+      max-width: 180px;
+      border: 0;
+      outline: 0;
+      background: var(--primary);
+      padding: 16px 20px;
+      border-radius: 5px;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: calc(20px * 3);
+      opacity: 0;
+      animation: up-animation .3s .7s forwards;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+      &:hover{
+        filter: brightness(1.2);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// --------------------animation and responsive-----------------
+
+@keyframes up-animation {
+  from{
+    opacity: 0;
+    transform: translateX(0);
+  }
+  to{
+    opacity: 1;
+    transform: translateX(40px);
+  }
+}
+@keyframes left-animation {
+  0%{
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@media screen and (width < 768px) {
+  .main-app{
+    .app-heading-text{
+      .main-app-welcome{
+        font-size: 30px;
+        line-height: calc(30px * 1.2);
+      }
+      .app-component-text{
+        font-size: 14px;
+      }
+    }
+  }
+}
+

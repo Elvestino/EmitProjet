@@ -1,0 +1,111 @@
+<div class="section-list">
+  <div class="section-list-headers">
+    <h2 class="section-list-table">Liste des Etudiants</h2>
+
+    @if (openAjouter) {
+      <button type="button" class="add close" (click)="closeModal()">
+        Fermer
+      </button>
+    } @else {
+      <button type="button" class="add" (click)="ajoutEtudiant()">
+        Ajout Etudiants
+      </button>
+    }
+  </div>
+</div>
+
+@if (openAjouter) {
+  <div class="ajout">
+    <form (submit)="saveData(student)" class="form">
+      <h2 class="add">{{ add }}</h2>
+      <!-- -----------------matricule--------------- -->
+      <label for="matricule">Matricule :</label>
+      <input
+        disabled
+        type="text"
+        name="matricule"
+        placeholder="matricule"
+        [(ngModel)]="student.matricule"
+      />
+      <!-- -----------------nom--------------- -->
+      <label for="nom">Nom :</label>
+      <input
+        type="text"
+        name="nom"
+        placeholder="ex: XXXXXXXX"
+        [(ngModel)]="student.nom"
+      />
+      <!-- -----------------prenom--------------- -->
+      <label for="prenom">Prénom :</label>
+      <input
+        type="text"
+        name="prenoms"
+        placeholder="ex : Xxxxxxxx"
+        [(ngModel)]="student.prenoms"
+      />
+      <!-- -----------------parcour--------------- -->
+      <label for="parcour">Parcours :</label>
+      <select name="parcour" id="parcour" [(ngModel)]="student.parcour">
+        @for (parcour of parcours; track $index) {
+          <option value="{{ parcour }}">{{ parcour }}</option>
+        }
+      </select>
+      <!-- -----------------niveau--------------- -->
+      <label for="niveau">Niveau :</label>
+      <select name="niveau" id="niveau" [(ngModel)]="student.niveau">
+        @for (item of niveaux; track $index) {
+          <option value="{{ item }}">{{ item }}</option>
+        }
+      </select>
+      <button type="submit" class="btn btn-primary">valider</button>
+    </form>
+  </div>
+}
+<br />
+
+<!-- ------------------donnee------------------------ -->
+
+<table class="section-table">
+  <thead
+    style="background-color: var(--primary); font-size: 19px; color: #ffffff"
+  >
+    <tr>
+      <th>Matricule</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Niveau</th>
+      <th>Parcours</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of data; track $index) {
+      <tr class="donnee">
+        <td>
+          {{ item.matricule }}
+        </td>
+        <td>
+          {{ item.nom }}
+        </td>
+        <td>
+          {{ item.prenoms }}
+        </td>
+        <td>
+          {{ item.niveau }}
+        </td>
+        <td>
+          {{ item.parcour }}
+        </td>
+        <td class="space">
+          <button class="btn btn-success" (click)="modifData(item)">
+            <i class="fa-solid fa-pencil"></i>
+          </button>
+
+          <button class="btn btn-danger" (click)="deleteData(item)">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

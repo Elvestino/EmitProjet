@@ -1,0 +1,33 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header-component-style{
+  background-color: var(--primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 4%;
+  display: flex;
+  justify-content: space-between  ;
+  align-items: center;
+  z-index: 100;
+  .header-component-link {
+    padding: 0 5%;
+    a{
+    font-size: 18px;
+    text-decoration: none;
+    color: #ffffff;
+    margin-left: 30px;
+    transition: .3s;
+    }
+    :hover, .active{
+      color: white;
+    }
+  }
+}
+

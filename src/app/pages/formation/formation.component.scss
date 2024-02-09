@@ -1,0 +1,72 @@
+@mixin lign {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 4px;
+    background-color: var(--primary) ;
+    bottom: -4px;
+    left: 0;
+  }
+
+.formation-heading{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  .formation-text {
+    border-radius: 30px;
+     color: black;
+    margin: 20px;
+    padding: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &.DA2I{
+      background-image: url(../../../assets/image/informatique.jpg);
+    }
+    &.AES{
+      background-image: url(../../../assets/image/management.jpg);
+
+    }
+    &.RPM{
+      background-image: url(../../../assets/image/multimedia.jpg);
+
+    }
+      .formation-body{
+        max-width: 60%;
+        padding-left: 20px;
+        border: 2px solid black;
+        .formation-title{
+          .formation-parcour{
+            position: relative;
+            color: red;
+            font-size: 30px;
+            &::after{
+              @include lign;
+            }
+          }
+        }
+      }
+      .formation-description{
+        max-width: 40%;
+      }
+
+      .btn-more{
+        margin: calc(10px * 3);
+        font-family: sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: var(--primary);
+        color: #ffffff;
+        border-radius: 10px;
+        padding: 15px 20px;
+        outline: 0;
+        border: 0;
+        &:hover{
+          filter: brightness(1.2);
+        }
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+  }
+}

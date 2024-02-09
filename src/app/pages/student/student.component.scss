@@ -1,0 +1,106 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.section-list{
+  width: 800px;
+  padding: 20px 25px;
+
+  margin: 30px 30%;
+  border-radius: 3px;
+  .section-list-headers{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 30px;
+    background-color: var(--primary);
+    border-radius: 10px;
+    color: #ffffff;
+    .add{
+      max-width: 180px;
+      border: 0;
+      outline: 0;
+      background-color: green;
+      padding: 16px 20px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+       font-size: 16px;
+       margin-top: calc(1px * 3);
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      &:hover{
+        filter: brightness(1.2);
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+      &.close {
+        background-color: red;
+      }
+    }
+
+  }
+}
+.form{
+  .add{
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 250px;
+        height: 4px;
+        background-color: var(--secondary) ;
+        bottom: -10px;
+        left: 40px;
+      }
+  }
+  border: 5px solid var(--secondary);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  padding: 1% 20px;
+  margin : 0 40%;
+  input {
+    padding: 10px;
+    border-radius: 5px;
+  }
+  label{
+    font-size: 18px;
+  }
+  select{
+    padding: 10px;
+    border-radius: 5px;
+  }
+}
+.donnee{
+  text-align: center;
+  .space{
+    display: flex;
+    gap: 30px;
+    .btn{
+      border-radius: 5px;
+      padding: 10px 20px;
+    }
+  }
+
+}
+.section-table{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  padding-left: 22%;
+  table, th, td {
+
+   border:1px solid var(--secondary);
+    padding: 30px ;
+  }
+
+  th{
+    text-align: center;
+    border-color: var(--primary);
+  }
+}
