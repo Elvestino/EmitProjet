@@ -1,43 +1,53 @@
-$debug: true;
+$debug: false;
 
-@if($debug){
-  *{
-    border: 2px solid green ;
+@if ($debug) {
+  * {
+    border: 2px solid green;
   }
 }
 
-.main-app{
+.main-app {
   color: var(--secondary);
-  padding : 7% 4%;
+  padding: 7% 4%;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  .img{
-    animation: left-animation .3s .5s forwards;
+  .img {
+    animation: left-animation 0.3s 0.5s forwards;
+    position: relative;
+    &::after {
+      position: absolute;
+      content: "";
+      width: 500px;
+      height: 4px;
+      background-color: var(--primary);
+      bottom: -90px;
+      left: -150px;
+    }
   }
 
-  .app-heading-text{
+  .app-heading-text {
     max-width: 650px;
     display: flex;
     flex-direction: column;
-    .span-welcome{
+    .span-welcome {
       color: red;
     }
 
-    .main-app-welcome{
+    .main-app-welcome {
       text-transform: uppercase;
       font-size: 40px;
       font-weight: bold;
       line-height: calc(40px * 1.2);
 
       opacity: 0;
-      animation: up-animation .3s .3s forwards;
+      animation: up-animation 0.3s 0.3s forwards;
     }
-    .text{
-      color: red
+    .text {
+      color: red;
     }
-    .span-welcome{
+    .span-welcome {
       @extend .main-app-welcome;
       margin-bottom: 30px;
       position: relative;
@@ -46,19 +56,19 @@ $debug: true;
         content: "";
         width: 150px;
         height: 4px;
-        background-color: var(--secondary) ;
+        background-color: var(--secondary);
         bottom: -5px;
         left: 0;
       }
     }
-    .app-component-text{
+    .app-component-text {
       margin-top: 20px;
       font-size: 16px;
       line-height: calc(16px * 1.4);
       opacity: 0;
-      animation: up-animation .3s .5s forwards;
+      animation: up-animation 0.3s 0.5s forwards;
     }
-    .btn-more{
+    .btn-more {
       max-width: 180px;
       border: 0;
       outline: 0;
@@ -70,10 +80,10 @@ $debug: true;
       font-size: 16px;
       margin-top: calc(20px * 3);
       opacity: 0;
-      animation: up-animation .3s .7s forwards;
+      animation: up-animation 0.3s 0.7s forwards;
       cursor: pointer;
-      transition: all .3s ease-in-out;
-      &:hover{
+      transition: all 0.3s ease-in-out;
+      &:hover {
         filter: brightness(1.2);
       }
       &:active {
@@ -83,53 +93,38 @@ $debug: true;
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // --------------------animation and responsive-----------------
 
 @keyframes up-animation {
-  from{
+  from {
     opacity: 0;
     transform: translateX(0);
   }
-  to{
+  to {
     opacity: 1;
     transform: translateX(40px);
   }
 }
 @keyframes left-animation {
-  0%{
+  0% {
     opacity: 0;
     transform: translateX(40px);
   }
-  100%{
+  100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
 @media screen and (width < 768px) {
-  .main-app{
-    .app-heading-text{
-      .main-app-welcome{
+  .main-app {
+    .app-heading-text {
+      .main-app-welcome {
         font-size: 30px;
         line-height: calc(30px * 1.2);
       }
-      .app-component-text{
+      .app-component-text {
         font-size: 14px;
       }
     }
   }
 }
-

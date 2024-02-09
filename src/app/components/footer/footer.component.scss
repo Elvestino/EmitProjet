@@ -1,15 +1,29 @@
 .footer-distributed{
+  top: 0;
+  bottom: 0;
   background-color: var(--primary);
   width: 100%;
   .footer-left{
     display: inline-block;
     width: 40%;
-  vertical-align: top;
+    vertical-align: top;
     .footer-name{
       color: var(--secondary);
       font-size: 20px;
       font-weight: normal;
-      margin: 0;
+      margin-top: 70px;
+    }
+    .footer-contact{
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 100px;
+        height: 4px;
+        background-color: #ffffff ;
+        bottom: -10px;
+        left: 5px;
+      }
     }
   }
     .footer-center,
@@ -18,6 +32,18 @@
   }
   .footer-right{
     width: 20%;
+    .footer-about{
+      position: relative;
+      &::after {
+        position: absolute;
+        content: "";
+        width: 100px;
+        height: 4px;
+        background-color: #ffffff ;
+        bottom: -13px;
+        left: 50px;
+      }
+    }
   }
   .footer-about{
     line-height: 20px;
@@ -27,7 +53,6 @@
     margin: 20px;
   }
   .footer-icons{
-    margin-top: 25px;
     a{
       display: inline-block;
       width: 35px;
@@ -40,11 +65,16 @@
       text-align: center;
       line-height: 35px;
       margin-right: 20px;
-      margin-bottom: 5px;
     }
 
   }
   .footer-center{
+  .test{
+    font-size: 17px;
+    display: flex;
+    gap: 10px;
+    padding-top: 25px;
+  }
     width: 35%;
     margin: 10px 0;
     p{

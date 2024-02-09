@@ -1,106 +1,123 @@
-@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
 
-.section-list{
-  width: 800px;
-  padding: 20px 25px;
-
-  margin: 30px 30%;
-  border-radius: 3px;
-  .section-list-headers{
+.student-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+  padding: 40px;
+  gap: 30px;
+  .list-header {
+    width: 100%;
+    background: var(--primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 30px;
-    background-color: var(--primary);
-    border-radius: 10px;
-    color: #ffffff;
-    .add{
-      max-width: 180px;
+    padding: 12px 20px;
+    max-width: 800px;
+    border-radius: 8px;
+    .header-title {
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .btn-add {
       border: 0;
       outline: 0;
-      background-color: green;
-      padding: 16px 20px;
-      border-radius: 5px;
-      color: white;
+      font-size: 14px;
+      padding: 12px 20px;
       font-weight: bold;
-       font-size: 16px;
-       margin-top: calc(1px * 3);
-      cursor: pointer;
-      transition: all .2s ease-in-out;
-      &:hover{
-        filter: brightness(1.2);
-      }
-      &:active {
-        transform: scale(0.9);
-      }
-      &.close {
-        background-color: red;
-      }
     }
+  }
+  .form-add-student {
+    width: 100%;
+    max-width: 800px;
+    .form {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      justify-content: center;
+      padding: 30px 20px;
 
-  }
-}
-.form{
-  .add{
-    font-size: 25px;
-    text-align: center;
-    position: relative;
-      &::after {
-        position: absolute;
-        content: "";
-        width: 250px;
-        height: 4px;
-        background-color: var(--secondary) ;
-        bottom: -10px;
-        left: 40px;
+      .add-title {
+        font-size: 20px;
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 50%;
+          height: 4px;
+          background: black;
+          left: 0;
+          bottom: -10px;
+          opacity: 0.5;
+          max-width: 150px;
+        }
       }
-  }
-  border: 5px solid var(--secondary);
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: center;
-  padding: 1% 20px;
-  margin : 0 40%;
-  input {
-    padding: 10px;
-    border-radius: 5px;
-  }
-  label{
-    font-size: 18px;
-  }
-  select{
-    padding: 10px;
-    border-radius: 5px;
-  }
-}
-.donnee{
-  text-align: center;
-  .space{
-    display: flex;
-    gap: 30px;
-    .btn{
-      border-radius: 5px;
-      padding: 10px 20px;
+
+      .form-add-section {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        label {
+          font-size: 14px;
+        }
+        input {
+          border: 1px solid #eee;
+          outline: 0;
+          padding: 12px 20px;
+          border-radius: 5px;
+          transition: all 0.3s ease-in-out;
+          &:focus {
+            border: 1px solid var(--primary);
+          }
+          &::placeholder {
+            font-size: 14px;
+            color: black;
+            opacity: 0.5;
+          }
+        }
+        select {
+          @extend input;
+        }
+      }
     }
   }
 
-}
-.section-table{
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  display: block;
-  padding-left: 22%;
-  table, th, td {
-
-   border:1px solid var(--secondary);
-    padding: 30px ;
-  }
-
-  th{
-    text-align: center;
-    border-color: var(--primary);
+  .section-table {
+    width: 100%;
+    .table-heading {
+      width: 100%;
+      .heading {
+        background: var(--primary);
+        th {
+          padding: 20px;
+          &:nth-child(1) {
+            width: 300px;
+          }
+          &:last-child {
+            width: 150px;
+          }
+        }
+      }
+    }
+    .table-body {
+      .data {
+        border-bottom: 1px solid #eee;
+        td {
+          padding: 8px 20px;
+          border: 1px solid #eee;
+          &:last-child {
+            display: flex;
+            justify-content: space-between;
+            border: none;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,33 +1,35 @@
-@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import "../../../../node_modules/bootstrap/scss/bootstrap.scss";
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-.header-component-style{
+.header-component-style {
+  position: fixed;
   background-color: var(--primary);
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   padding: 20px 4%;
   display: flex;
-  justify-content: space-between  ;
+  justify-content: space-between;
   align-items: center;
   z-index: 100;
   .header-component-link {
     padding: 0 5%;
-    a{
-    font-size: 18px;
-    text-decoration: none;
-    color: #ffffff;
-    margin-left: 30px;
-    transition: .3s;
-    }
-    :hover, .active{
-      color: white;
+    a {
+      font-size: 18px;
+      text-decoration: none;
+      color: #ffffff;
+      margin-left: 30px;
+      transition: 0.3s;
+      &:hover {
+        border: 1px solid transparent;
+        padding: 34px;
+        background-color: rgba(0, 119, 255, 0.596);
+        color: white;
+      }
     }
   }
 }
-

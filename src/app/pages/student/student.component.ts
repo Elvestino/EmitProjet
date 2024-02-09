@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { StudentModel } from '../../models/student.model';
 import { FormsModule } from '@angular/forms';
 import { v4 as uuid } from 'uuid';
@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
   styleUrl: './student.component.scss',
 })
 export class StudentComponent {
+  constructor(private cdr: ChangeDetectorRef) {}
+
   add = 'Enregistrement Etudiant';
   parcours: string[] = ['DA2I', 'RPM', 'AES'];
   niveaux: string[] = ['L1', 'L2', 'L3'];
@@ -43,7 +45,9 @@ export class StudentComponent {
 
   ngAfterViewInit() {
     if (typeof window != 'undefined') {
+      this.getData();
     }
+    this.cdr.detectChanges();
   }
 
   //  get all  data from localstorage
@@ -73,28 +77,33 @@ export class StudentComponent {
 
   // insert data
   saveData(student: StudentModel) {
-    window.localStorage.setItem(
-      `student-${student.matricule}`,
-      JSON.stringify(student),
-    );
-    this.getData();
-    this.student.matricule = uuid();
-    this.student = this.studentVideo;
-    this.openAjouter = false;
-
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Etudiant ajouter',
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    if (this.student.nom === '') {
+      alert('votre nom est vide');
+      console.log('erreur');
+      this.openAjouter = true;
+      this.student.matricule = uuid();
+    } else {
+      window.localStorage.setItem(
+        `student-${student.matricule}`,
+        JSON.stringify(student),
+      );
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Etudiant ajouter',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      this.student = this.studentVideo;
+      this.openAjouter = false;
+      this.getData();
+    }
   }
 
-  //  delete
+  //---------------------  delete--------------------------
+
   deleteData(student: StudentModel) {
     this.student = this.studentVideo;
-
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -118,6 +127,7 @@ export class StudentComponent {
             title: 'Supprimer',
             text: 'Suppression avec success',
             icon: 'success',
+            showConfirmButton: false,
             timer: 1000,
           });
           window.localStorage.removeItem(`student-${student.matricule}`);
@@ -131,6 +141,7 @@ export class StudentComponent {
             text: 'Suppression Annuler :)',
             icon: 'error',
             timer: 1000,
+            showConfirmButton: false,
           });
         }
       });
