@@ -27,8 +27,26 @@
       &:hover {
         border: 1px solid transparent;
         padding: 34px;
-        background-color: rgba(0, 119, 255, 0.596);
+        background-color: rgba(0, 119, 255, 0.39);
         color: white;
+      }
+    }
+  }
+}
+
+@media screen and (width < 768px) {
+  .header-component-style {
+    .header-component-logo {
+      width: 50px;
+    }
+    .header-component-link {
+      .link {
+        font-size: 14px;
+        display: block;
+        &:hover {
+          padding: 0;
+          margin: 0;
+        }
       }
     }
   }

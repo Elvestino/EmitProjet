@@ -78,8 +78,10 @@ export class StudentComponent {
   // insert data
   saveData(student: StudentModel) {
     if (this.student.nom === '') {
-      alert('votre nom est vide');
-      console.log('erreur');
+      Swal.fire({
+        icon: 'error',
+        text: 'Veuillez remplir le(s) champ(s) vide(s)',
+      });
       this.openAjouter = true;
       this.student.matricule = uuid();
     } else {

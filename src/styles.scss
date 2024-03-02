@@ -1,19 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
-@import '../node_modules/bootstrap/scss/bootstrap.scss';
-@import '../node_modules/@fortawesome/fontawesome-free/css/all.css';
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
 
-:root{
+:root {
   --primary: #94cdfc;
   --secondary: #0b0b0b;
+  --orange: #fc8907;
 }
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   box-sizing: border-box;
-
 }
 
-html,body{
+html,
+body {
   scroll-behavior: smooth;
 }
